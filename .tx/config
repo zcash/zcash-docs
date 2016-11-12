@@ -1,0 +1,7 @@
+[main]
+host = https://www.transifex.com
+
+[zcash-documents-other-assets-than-websiteblog.Sprout_User_Guide]
+source_file = en/Sprout_User_Guide.md
+source_lang = en
+type = WIKI
