@@ -2,12 +2,13 @@
 host = https://www.transifex.com
 
 [zcash-documents-other-assets-than-websiteblog.Sprout_User_Guide]
+file_filter = <lang>/Sprout_User_Guide.md
 source_file = en/Sprout_User_Guide.md
 source_lang = en
 type = WIKI
 
 [zcash-documents-other-assets-than-websiteblog.Mining_Guide]
+file_filter = <lang>/Mining_Guide.md
 source_file = en/Mining_Guide.md
 source_lang = en
 type = WIKI
-
