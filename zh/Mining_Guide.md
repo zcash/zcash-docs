@@ -12,7 +12,7 @@ https://forum.z.cash/
 
 ## 配置
 
-按照 [[1.0-User-Guide#configuration]] 中的提示，配置您的节点，包括以下章节的内容， [使能 CPU 挖矿] (https://github.com/zcash/zcash-docs/blob/master/zh/Sprout_User_Guide.md).
+按照 [1.0-User-Guide#configuration](https://github.com/zcash/zcash-docs/blob/master/zh/Sprout_User_Guide.md#configuration) 中的提示，配置您的节点，包括以下章节的内容， [使能 CPU 挖矿] (https://github.com/zcash/zcash-docs/blob/master/zh/Sprout_User_Guide.md).
 
 ## 挖矿
 

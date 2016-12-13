@@ -12,13 +12,14 @@ https://forum.z.cash/
 
 ## Конфигурация
 
-Сконфигурируйте свой узел согласно [[1.0-User-Guide#configuration]], включая раздел [доступность майнинга на CPU] (https://github.com/zcash/zcash-docs/blob/master/ru/Sprout_User_Guide.md).
+Сконфигурируйте свой узел согласно [1.0-User-Guide#configuration](https://github.com/zcash/zcash-docs/blob/master/ru/Sprout_User_Guide.md#configuration), включая раздел [доступность майнинга на CPU] (https://github.com/zcash/zcash-docs/blob/master/ru/Sprout_User_Guide.md).
 
 ## Майнинг
 
 Сейчас начните майнинг!
 ```bash
 $ ./src/zcashd
+```
 
 Для запуска в фоновом режиме (без экрана параметров узла, который обычно отображается):
 
