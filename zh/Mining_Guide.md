@@ -8,11 +8,11 @@ https://forum.z.cash/
 
 ## 安装
 
-首先，您需要搭建您本地的 Zcash 节点。请按照 [1.0 用户指导](1.0 用户指导) 中，从开头到 "编译"的章节，按步进行操作，之后再回到这里。(您同样可以进入"测试"环节，如果您需要的话！)
+首先，您需要搭建您本地的 Zcash 节点。请按照 [1.0 用户指导](https://github.com/zcash/zcash-docs/blob/master/zh/Sprout_User_Guide.md) 中，从开头到 "编译"的章节，按步进行操作，之后再回到这里。(您同样可以进入"测试"环节，如果您需要的话！)
 
 ## 配置
 
-按照 [[1.0-User-Guide#configuration]] 中的提示，配置您的节点，包括以下章节的内容， [使能 CPU 挖矿] (https://github.com/zcash/zcash/wiki/1.0-User-Guide#enabling-cpu-mining).
+按照 [[1.0-User-Guide#configuration]] 中的提示，配置您的节点，包括以下章节的内容， [使能 CPU 挖矿] (https://github.com/zcash/zcash-docs/blob/master/zh/Sprout_User_Guide.md).
 
 ## 挖矿
 
@@ -37,7 +37,7 @@ Zcash Miner started
 
 ### 花费挖矿收益
 
-币被挖到了一个 t-addr (透明地址), 但是只能发送到 z-addr(隐私地址)。参考我们 [1.0 用户指导](https://github.com/zcash/zcash/wiki/1.0-User-Guide)，来了解如何使用 `z_sendmany` 命令和如何从 t-addr 发送货币到 z-addr. 你需要至少 4 GB 的 RAM 来运行这些功能。
+币被挖到了一个 t-addr (透明地址), 但是只能发送到 z-addr(隐私地址)。参考我们 [1.0 用户指导](https://github.com/zcash/zcash-docs/blob/master/zh/Sprout_User_Guide.md)，来了解如何使用 `z_sendmany` 命令和如何从 t-addr 发送货币到 z-addr. 你需要至少 4 GB 的 RAM 来运行这些功能。
 
 ## 修饰
 

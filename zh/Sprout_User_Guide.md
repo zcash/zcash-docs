@@ -37,7 +37,7 @@ https://github.com/zcash/zcash/blob/v1.0.1/doc/payment-api.md
 
 在安装，升级或运行 Zcash 之前，请确认你已经检查安全性问题。请查看安全页面：
 
-https://z.cash/support/security.html
+https://z.cash/zh/support/security.html
 
 ## 开始
 
@@ -260,4 +260,4 @@ https://github.com/zcash/zcash/blob/master/doc/security-warnings.md
 
 请同时查看我们的安全页面来了解近期的通知和其他资源：
 
-https://z.cash/support/security.html
+https://z.cash/zh/support/security.html
