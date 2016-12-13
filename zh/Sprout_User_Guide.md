@@ -10,7 +10,7 @@
 
 ```
 git fetch origin
-git checkout v1.0.1
+git checkout v1.0.3
 ./zcutil/fetch-params.sh
 ./zcutil/build.sh -j$(nproc)
 ```
@@ -31,7 +31,7 @@ Zcash 支持两种不同的地址，一个 _z-addr_ (以 **z** 作为开头) 的
 
 目前的界面是命令行客户端 (`zcash-cli`) 和远程过程调用(RPC)接口，它们被记录在这里：
 
-https://github.com/zcash/zcash/blob/v1.0.1/doc/payment-api.md
+https://github.com/zcash/zcash/blob/v1.0.3/doc/payment-api.md
 
 ## 安全性
 
@@ -70,7 +70,7 @@ gtest-devel gcc gcc-c++ libtool patch
 ```bash
 $ git clone https://github.com/zcash/zcash.git
 $ cd zcash/
-$ git checkout v1.0.1
+$ git checkout v1.0.3
 $ ./zcutil/fetch-params.sh
 ```
 

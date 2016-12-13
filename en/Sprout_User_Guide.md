@@ -10,7 +10,7 @@ If you were playing with our alpha/beta/rc testnets, ensure that your `~/.zcash/
 
 ```
 git fetch origin
-git checkout v1.0.1
+git checkout v1.0.3
 ./zcutil/fetch-params.sh
 ./zcutil/build.sh -j$(nproc)
 ```
@@ -31,7 +31,7 @@ Currently, you will need:
 
 The interfaces are a commandline client (`zcash-cli`) and a Remote Procedure Call (RPC) interface, which is documented here:
 
-https://github.com/zcash/zcash/blob/v1.0.1/doc/payment-api.md
+https://github.com/zcash/zcash/blob/v1.0.3/doc/payment-api.md
 
 ## Security
 
@@ -70,7 +70,7 @@ Fetch our repository with git and run `fetch-params.sh` like so:
 ```bash
 $ git clone https://github.com/zcash/zcash.git
 $ cd zcash/
-$ git checkout v1.0.1
+$ git checkout v1.0.3
 $ ./zcutil/fetch-params.sh
 ```
 

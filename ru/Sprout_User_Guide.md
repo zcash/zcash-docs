@@ -10,7 +10,7 @@
 
 ```
 git fetch origin
-git checkout v1.0.1
+git checkout v1.0.3
 ./zcutil/fetch-params.sh
 ./zcutil/build.sh -j$(nproc)
 ```
@@ -31,7 +31,7 @@ Zcash поддерживает 2 вида адресов: _z-addr_ (которы
 
 Интерфейс представляет собой командную строку (`zcash-cli`) и вызов удаленной процедуры (RPC). Об этом можно почитать здесь:
 
-https://github.com/zcash/zcash/blob/v1.0.1/doc/payment-api.md
+https://github.com/zcash/zcash/blob/v1.0.3/doc/payment-api.md
 
 ## Безопасность
 
@@ -69,7 +69,7 @@ gtest-devel gcc gcc-c++ libtool patch
 ```bash
 $ git clone https://github.com/zcash/zcash.git
 $ cd zcash/
-$ git checkout v1.0.1
+$ git checkout v1.0.3
 $ ./zcutil/fetch-params.sh
 ```
 

@@ -10,7 +10,7 @@ Si estabas participando en nuestros testnets alfa/beta/rc, asegúrate de que tu 
 
 ```
 git fetch origin
-git checkout v1.0.1
+git checkout v1.0.3
 ./zcutil/fetch-params.sh
 ./zcutil/build.sh -j$(nproc)
 ```
@@ -31,7 +31,7 @@ Actualmente, necesitarás:
 
 Las interfaces son un cliente de línea de comandos (`zcash-cli`)  y una interfaz de Llamada de Procedimiento Remoto (RPC, por sus siglas en inglés), que se documenta aquí:
 
-https://github.com/zcash/zcash/blob/v1.0.1/doc/payment-api.md
+https://github.com/zcash/zcash/blob/v1.0.3/doc/payment-api.md
 
 ## Seguridad
 
@@ -69,7 +69,7 @@ Busca nuestro repositorio con git y ejecuta `fetch-params.sh`  de esta manera:
 ```bash
 $ git clone https://github.com/zcash/zcash.git
 $ cd zcash/
-$ git checkout v1.0.1
+$ git checkout v1.0.3
 $ ./zcutil/fetch-params.sh
 ```
 
