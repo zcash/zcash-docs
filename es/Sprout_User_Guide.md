@@ -259,6 +259,6 @@ https://github.com/zcash/zcash/blob/master/doc/security-warnings.md
 
 Consulta también nuestra página de seguridad para ver las notificaciones recientes y otros contenidos:
 
-https://z.cash/support/security.html
+https://z.cash/es/support/security.html
 
-https://z.cash/support/security.html
+https://z.cash/es/support/security.html

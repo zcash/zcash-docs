@@ -8,7 +8,7 @@ https://forum.z.cash/
 
 ## Preparación
 
-En primer lugar, debes configurar tu nodo Zcash local. Sigue los pasos de la [Guía del Usuario 1.0](1.0 User Guide) hasta el final de la sección "Compilación", luego vuelve aquí. (También puedes hacer la sección "Testear" si lo deseas!)
+En primer lugar, debes configurar tu nodo Zcash local. Sigue los pasos de la [Guía del Usuario 1.0](https://github.com/zcash/zcash-docs/blob/master/es/Sprout_User_Guide.md) hasta el final de la sección "Compilación", luego vuelve aquí. (También puedes hacer la sección "Testear" si lo deseas!)
 
 ## Configuración
 
@@ -37,7 +37,7 @@ Zcash Miner started
 
 ### Gasto de las Recompensas de Minado
 
-Las monedas se extraen en un t-addr, (una dirección transparente), pero sólo se pueden gastar en un z-addr (una dirección blindada). Consulta nuestra [Guía del usuario 1.0] (https://github.com/zcash/zcash/wiki/1.0-User-Guide) para obtener instrucciones sobre cómo utilizar el comando `z_sendmany` para enviar monedas desde un t-addr a un z-addr. Necesitarás al menos 4 GB de RAM para esta operación.
+Las monedas se extraen en un t-addr, (una dirección transparente), pero sólo se pueden gastar en un z-addr (una dirección blindada). Consulta nuestra [Guía del usuario 1.0] (https://github.com/zcash/zcash-docs/blob/master/es/Sprout_User_Guide.md) para obtener instrucciones sobre cómo utilizar el comando `z_sendmany` para enviar monedas desde un t-addr a un z-addr. Necesitarás al menos 4 GB de RAM para esta operación.
 
 ## Modificaciones
 
