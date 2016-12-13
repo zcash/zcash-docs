@@ -19,7 +19,7 @@ git checkout v1.0.1
 
 ## 一个关于术语的快速笔记
 
-Zcash 支持两种不同的地址，一个 _z-addr_ (以 **z**作为开头) 的地址，使用了零知识证明和其他密码学工具来保护用户隐私。同样有 _t-addrs_ (以**t**作为开头)的地址，这些第一与比特币地址用法相同。
+Zcash 支持两种不同的地址，一个 _z-addr_ (以 **z** 作为开头) 的地址，使用了零知识证明和其他密码学工具来保护用户隐私。同样有 _t-addrs_ (以 **t** 作为开头)的地址，这些第一与比特币地址用法相同。
 
 ## 需要
 
@@ -50,7 +50,7 @@ https://github.com/zcash/zcash/wiki/Debian-binary-packages
 
 在基于 Ubuntu 或者 Debian 的系统中:
 
-``bash
+```bash
 $ sudo apt-get install \
 build-essential pkg-config libc6-dev m4 g++-multilib \
 autoconf libtool ncurses-dev unzip git python \
