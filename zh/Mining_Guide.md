@@ -45,7 +45,7 @@ Zcash Miner started
 
 在 `zcashd`_ 挖矿程序内部，对于每一个被挖掘出的区块都使用一个新的透明地址。如果你向对于每个被挖掘出的区块，使用同样的地址，请找到以下函数进行设置，`src/miner.cpp` (在以下函数中 `ProcessBlockFound()`) 和 `src/wallet/wallet.cpp` (在以下函数中 `CommitTransaction()`):
 
-``cpp
+```cpp
 reservekey.KeepKey();
 ```
 
