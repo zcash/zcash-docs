@@ -37,7 +37,7 @@ https://github.com/zcash/zcash/blob/v1.0.1/doc/payment-api.md
 
 Antes de instalar, actualizar o ejecutar zcash, asegúrate de haber chequeado cualquier problema de seguridad. Visita nuestra página de seguridad:
 
-https://z.cash/support/security.html
+https://z.cash/es/support/security.html
 
 ## Comenzar
 
