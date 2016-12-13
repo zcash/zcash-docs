@@ -12,7 +12,7 @@ En primer lugar, debes configurar tu nodo Zcash local. Sigue los pasos de la [Gu
 
 ## Configuración
 
-Configura tu nodo según [[1.0-User-Guide#configuration]], incluyendo la sección [Activación de la Minería de CPU](https://github.com/zcash/zcash/wiki/1.0-User-Guide#enabling-cpu-mining).
+Configura tu nodo según [[1.0-User-Guide#configuration]], incluyendo la sección [Activación de la Minería de CPU](https://github.com/zcash/zcash-docs/blob/master/es/Sprout_User_Guide.md#enabling-cpu-mining).
 
 ## Minado
 
