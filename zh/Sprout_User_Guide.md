@@ -132,7 +132,7 @@ $ echo "genproclimit=$(nproc)" >> ~/.zcash/zcash.conf
 $ echo 'equihashsolver=tromp' >> ~/.zcash/zcash.conf
 ```
 
-注意，你也许想要阅读 [[挖矿指导]] 来了解更多挖矿的细节。
+注意，你也许想要阅读 [挖矿指导](https://github.com/zcash/zcash-docs/blob/master/zh/Mining_Guide.md) 来了解更多挖矿的细节。
 
 ## 运行 Zcash:
 

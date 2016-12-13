@@ -131,7 +131,7 @@ El minero por defecto no es eficiente, pero ha sido bien revisado. Para utilizar
 $ echo 'equihashsolver=tromp' >> ~/.zcash/zcash.conf
 ```
 
-Nota, probablemente quieras leer la [[Guía de Minado]] para obtener más detalles sobre el minado.
+Nota, probablemente quieras leer la [Guía de Minado](https://github.com/zcash/zcash-docs/blob/master/es/Mining_Guide.md) para obtener más detalles sobre el minado.
 
 ## Ejecutar Zcash:
 
