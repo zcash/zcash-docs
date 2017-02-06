@@ -6,7 +6,7 @@ N'hésitez pas à nous contacter si vous rencontrez un problème. Nous planifion
 
 ## Mise à jour
 
-Si vous participez aux alpha/beta/rc testnets, vérifier que votre `~/.zcash/zcash.conf` ne contient pas `testnet=1` ou `addnode=betatestnet.z.cash`. Si vous êtes sur un distribution basé sur Debian, vous pouvez suivre les [instructions Debian](https://github.com/zcash/zcash/wiki/Debian-binary-packages) pour installer zcash sur votre système.
+Si vous participiez aux alpha/beta/rc testnets, vérifier que votre `~/.zcash/zcash.conf` ne contient pas `testnet=1` ou `addnode=betatestnet.z.cash`. Si vous êtes sur un distribution basé sur Debian, vous pouvez suivre les [instructions Debian](https://github.com/zcash/zcash/wiki/Debian-binary-packages) pour installer zcash sur votre système.
 Dans le cas contraire, vous pouvez mettre à jour votre snapshot avec ce code :
 
 ```
@@ -21,7 +21,7 @@ Vérifier également que votre dossier ``~/.zcash``  contient seulement ``zcash.
 
 ## Bref note sur la terminologie
 
-Zcash supporte deux type d'adresses, une _z-addr_ (qui commence avec un **z**) est un type d'adresse qui utilise les preuves à divulgation nulle de connaissance et d'autres chiffrements pour protéger la vie privée de l'utilisateur. Il y aussi les t-addr (qui commence avec un **t**) qui sont similaires aux adresses Bitcoin.
+Zcash supporte deux type d'adresses, une _z-addr_ (qui commence avec un **z**) est un type d'adresse qui utilise les preuves à divulgation nulle de connaissance et d'autres chiffrements pour protéger la vie privée de l'utilisateur. Les t-addr (qui commence avec un **t**) sont similaires aux adresses Bitcoin.
 
 ## Configuration Requise
 
@@ -75,13 +75,13 @@ $ git checkout v1.0.3
 $ ./zcutil/fetch-params.sh
 ```
 
-Cela va récupérer les clés de vérification et de preuve  (les clés finales créées lors de la [Cérémonie de Génération des Paramètres](https://github.com/zcash/mpc)), et les places dans `~/.zcash-params/`. Ces clés occupent un peu moins de 911MB d'espace disque, ainsi le téléchargement peu prendre du temps.
+Cela va récupérer les clés de vérification et de preuve  (les clés finales créées lors de la [Cérémonie de Génération des Paramètres](https://github.com/zcash/mpc)), et les places dans `~/.zcash-params/`. Ces clés occupent un peu moins de 911MB d'espace disque, ainsi le téléchargement peut prendre du temps.
 
 Le message affiché par ``git checkout`` sur une "detached head" est normal et n'indique pas un problème.
 
 #### Compilation
 
-Assurez-vous d'avoir correctement installé les dépendances listé ci dessus. Puis, lancer la compilation :
+Assurez-vous d'avoir correctement installé les dépendances listées ci-dessus. Puis, lancer la compilation :
 
 ```bash
 $ ./zcutil/build.sh -j$(nproc)
@@ -115,7 +115,7 @@ echo "rpcuser=username" >>~/.zcash/zcash.conf
 echo "rpcpassword=`head -c 32 /dev/urandom | base64`" >>~/.zcash/zcash.conf
 ```
 
-Notez qu'il est possible que cela écrase vos réglages  `zcash.conf` précédentes que vous auriez pi ajouter du testnet. Vous pouvez garder un `zcash.conf` du testnet, mais vérifier que les réglages `testnet=1` et  `addnode=betatestnet.z.cash` sont été supprimés; et remplacer par `addnode=mainnet.z.cash` à la place. Nous vous recommandons fortement d'utiliser une mot de passe aléatoire afin d'éviter des [problèmes de sécurité potentiel avec l'interface RPC](https://github.com/zcash/zcash/blob/master/doc/security-warnings.md#rpc-interface).
+Notez qu'il est possible que cela écrase vos réglages  `zcash.conf` précédents que vous auriez pu ajouter lors du testnet. Vous pouvez garder un `zcash.conf` du testnet, mais vérifier que les réglages `testnet=1` et  `addnode=betatestnet.z.cash` ont été supprimés; et ajoutez `addnode=mainnet.z.cash` à la place. Nous vous recommandons fortement d'utiliser une mot de passe aléatoire afin d'éviter des [problèmes de sécurité potentiel avec l'interface RPC](https://github.com/zcash/zcash/blob/master/doc/security-warnings.md#rpc-interface).
 
 ### Activer le minage CPU :
 
@@ -142,7 +142,7 @@ Maintenant, lancer zcashd !
 $ ./src/zcashd
 ```
 
-Pour la lancer en tache de fond (sans l'écran avec les différentes métriques du noeud qui est normalement affiché) exécuter ``./src/zcashd --daemon``.
+Pour le lancer en tâche de fond (sans l'écran avec les différentes métriques du noeud qui est normalement affiché) exécutez ``./src/zcashd --daemon``.
 
 Vous devriez pouvoir utiliser l'interface RPC une fois que le chargement est terminé. Une façon rapide de tester :
 
@@ -150,7 +150,7 @@ Vous devriez pouvoir utiliser l'interface RPC une fois que le chargement est ter
 $ ./src/zcash-cli getinfo
 ```
 
-**NOTE** : Si vous êtes familier avec l'interface RPC de bitcoind, vous pouvez utiliser la plupart de ces commandes pour envoyer des ZEC entre les `t-addr` adresses. Nous ne supportons pas la fonctionnalité de 'Comptes' (qui est maintenant obsolète dans ``bitcoind``) — seulement une chaine de caractères vide ``""`` peut être utiliser comme nom de comptes.
+**NOTE** : Si vous êtes familier avec l'interface RPC de bitcoind, vous pouvez utiliser la plupart de ces commandes pour envoyer des ZEC entre les `t-addr` adresses. Nous ne supportons pas la fonctionnalité de 'Comptes' (qui est maintenant obsolète dans ``bitcoind``) — seulement une chaine de caractères vide ``""`` peut être utilisée comme nom de compte.
 
 **NOTE** : Le noeud principal du réseau accessible à mainnet.z.cash est aussi accessible via les services cachés de Tor à zcmaintvsivr7pcn.onion.
 
@@ -162,7 +162,7 @@ $ ./src/zcash-cli getpeerinfo
 
 ## Utiliser Zcash
 
-Tout d'abord, il vous faut obtenir des Zcash. Vous pouvez les acheter sur une plateforme d'échange, à d'autres utilisateurs, ou vendre des produits et services pour en récupérer ! La meilleur façon d'obtenir des Zcash (de manière sure) n'est pas documenter ici, mais faites attention. Evitez les arnaques !
+Tout d'abord, il vous faut obtenir des Zcash. Vous pouvez les acheter sur une plateforme d'échange, à d'autres utilisateurs, ou vendre des produits et services pour en récupérer ! La meilleur façon d'obtenir des Zcash (de manière sécuritaire) n'est pas documentée ici, mais faites attention. Evitez les arnaques !
 
 ### Générez une t-addr
 
@@ -184,7 +184,7 @@ ztbqWB8VDjVER7uLKb4oHp2v54v2a1jKd9o4FY7mdgQ3gDfG8MiZLvdQga8JK3t58yjXGjQHzMzkGUxS
 
 Cela va créer une adresse privée et stocker les clés dans votre fichier portefeuille local. Donnez cette adresse à votre expéditeur !
 
-Les z-addr sont plutôt longue, une erreur est vite arrivé. Mettons la dans une variable d'environnement pour éviter les erreurs :
+Les z-addr sont plutôt longues, une erreur est vite arrivée. Mettons la dans une variable d'environnement pour éviter les erreurs :
 
 ```bash
 $ ZADDR='ztbqWB8VDjVER7uLKb4oHp2v54v2a1jKd9o4FY7mdgQ3gDfG8MiZLvdQga8JK3t58yjXGjQHzMzkGUxSguSs6ZzqpgTNiZG'
@@ -254,11 +254,10 @@ $ ./src/zcash-cli z_getoperationresult
 
 ## Problèmes de Sécurité Connus
 
-Chaque version contient un document `./doc/security-warnings.md` décrivant les problèmes de sécurités connues qui touchent cette version. Vous pouvez trouver la version la plus récente de ce document ici :
+Chaque version contient un document `./doc/security-warnings.md` décrivant les problèmes de sécurités connues qui concernent cette version. Vous pouvez trouver la version la plus récente de ce document ici :
 
 https://github.com/zcash/zcash/blob/master/doc/security-warnings.md
 
-Merci de nous contacter
 Pour de plus amples informations sur les notifications récentes et d'autres ressources, veuillez consulter notre page sur la sécurité :
 
 https://z.cash/support/security.html
