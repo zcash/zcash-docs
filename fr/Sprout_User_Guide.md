@@ -1,6 +1,6 @@
 # Guide Zcash 1.0 "Pousse"
 
-Bienvenue ! Ce guide est destiné à vous permettre d'utiliser le réseau ZCash officiel. Actuellement, Zcash a encore quelques limitations : seulement Linux est officiellement supporté, requiert 64-bit, et dans certaines situations requiert une utilisation importante de la mémoire vive et du CPU pour créer des transactions.
+Bienvenue ! Ce guide est destiné à vous permettre d'utiliser le réseau Zcash officiel. Actuellement, Zcash a encore quelques limitations : seulement Linux est officiellement supporté, requiert 64-bit, et dans certaines situations requiert une utilisation importante de la mémoire vive et du CPU pour créer des transactions.
 
 N'hésitez pas à nous contacter si vous rencontrez un problème. Nous planifions de diminuer l'utilisation du CPU et de la mémoire ainsi que le support d'autres architectures et systèmes d'exploitation.
 
@@ -90,7 +90,7 @@ Cela devrait compiler les dépendances et `zcashd`. (Note : si vous n'avez pas d
 
 #### Tests
 
-Les test prennent du temps à s'exécuter et peuvent requérir plus de 8GB de mémoire vive. Si vous préférez démarrer directement, vous pouvez directement aller à la section suivante. Si vous voulez lancer les tests pour vous assurer que ZCash fonctionne, exécutez :
+Les test prennent du temps à s'exécuter et peuvent requérir plus de 8GB de mémoire vive. Si vous préférez démarrer directement, vous pouvez directement aller à la section suivante. Si vous voulez lancer les tests pour vous assurer que Zcash fonctionne, exécutez :
 
 ```bash
 $ ./qa/zcash/full-test-suite.sh
