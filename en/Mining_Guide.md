@@ -35,9 +35,19 @@ Zcash Miner started
 
 Congratulations! You are now mining on the mainnet.
 
+To stop the Zcash daemon, enter the command:
+
+```bash
+$ ./src/zcash-cli stop
+```
+
 ### Spending Mining Rewards
 
-Coins are mined into a t-addr (transparent address), but can only be spent to a z-addr (shielded address). Refer to our [1.0 User Guide](https://github.com/zcash/zcash/wiki/1.0-User-Guide) for instructions on how to use the `z_sendmany` command to send coins from a t-addr to a z-addr. You will need at least 4GB of RAM for this operation.
+Coins are mined into a t-addr (transparent address), but can only be spent to a z-addr (shielded address), and must be swept out of the t-addr in one transaction with no change. Refer to our [1.0 User Guide](https://github.com/zcash/zcash/wiki/1.0-User-Guide) for instructions on how to use the `z_sendmany` command to send coins from a t-addr to a z-addr. You will need at least 4GB of RAM for this operation.
+
+### Mining Pools
+
+If you're mining by yourself or at home, you're most likely to succeed if you join an existing mining pool. See this community-maintained [list of mining pools](https://www.zcashcommunity.com/mining/mining-pools/) for further instructions.
 
 ## Modifications
 
@@ -50,6 +60,8 @@ reservekey.KeepKey();
 ```
 
 Remove or comment out that line in both places.
+
+zcashd 1.0.6 will have out-of-the-box support for mining to a specified address using the `-mineraddress=` option.
 
 ### Use P2PKH transactions
 
