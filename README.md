@@ -1,6 +1,6 @@
 # Zcash Documentation
 
-Translations of Zcash documentation. Currently contains Spanish, Russian, and Chinese translations of:
+Translations of Zcash documentation. Currently contains Spanish, Russian, Portuguese, and Chinese translations of:
 
 + Zcash Mining Guide - [original found here](https://github.com/zcash/zcash/wiki/Mining-Guide)
 + Zcash 1.0 "Sprout" User Guide - [original found here](https://github.com/zcash/zcash/wiki/1.0-User-Guide)
@@ -19,3 +19,8 @@ Translations of Zcash documentation. Currently contains Spanish, Russian, and Ch
 
 + [Руководство по майнингу Zcash](https://github.com/zcash/zcash-docs/blob/master/ru/Mining_Guide.md)
 + [Гид по установке Zcash 1.0 "Sprout"](https://github.com/zcash/zcash-docs/blob/master/ru/Sprout_User_Guide.md)
+
+## Português
+
++ [Guia de Mineração Zcash](https://github.com/zcash/zcash-docs/blob/master/pt_BR/Mining_Guide.md)
++ [Guia Zcash 1.0 "Sprout"](https://github.com/zcash/zcash-docs/blob/master/pt_BR/Sprout_User_Guide.md)
