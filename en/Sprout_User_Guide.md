@@ -6,16 +6,20 @@ Please let us know if you run into snags. We plan to make it less memory/CPU int
 
 ## Upgrading?
 
-If you were playing with our alpha/beta/rc testnets, ensure that your `~/.zcash/zcash.conf` does not contain `testnet=1` or `addnode=betatestnet.z.cash`. If you're on a Debian-based distribution, you can follow the [Debian instructions](https://github.com/zcash/zcash/wiki/Debian-binary-packages) to install zcash on your system. Otherwise, you can update your local snapshot of our code:
+If you were playing with our alpha/beta/rc testnets, ensure that your `~/.zcash/zcash.conf` does not contain `testnet=1` or `addnode=testnet.z.cash`. If you're on a Debian-based distribution, you can follow the [Debian instructions](https://github.com/zcash/zcash/wiki/Debian-binary-packages) to install zcash on your system. Otherwise, you can update your local snapshot of our code:
 
 ```
 git fetch origin
-git checkout v1.0.3
+git checkout v1.0.8-1
 ./zcutil/fetch-params.sh
-./zcutil/build.sh -j$(nproc)
+./zcutil/build.sh --disable-rust -j$(nproc)
 ```
 
-Also make sure that your ``~/.zcash`` directory contains only ``zcash.conf`` to start with.
+Note: if you don't have `nproc`, then substitute the number of cores on your system. If the build runs out of memory, try again without the `-j` argument, i.e. just `./zcutil/build.sh --disable-rust`.
+
+If you are upgrading from testnet, make sure that your ``~/.zcash`` directory contains only ``zcash.conf`` to start with.
+
+If the build fails, move aside your ``zcash`` directory and try again by following the instructions in the [Compile it yourself](#or-compile-it-yourself) section below.
 
 ## A quick note about terminology
 
@@ -31,7 +35,7 @@ Currently, you will need:
 
 The interfaces are a commandline client (`zcash-cli`) and a Remote Procedure Call (RPC) interface, which is documented here:
 
-https://github.com/zcash/zcash/blob/v1.0.3/doc/payment-api.md
+https://github.com/zcash/zcash/blob/v1.0.8-1/doc/payment-api.md
 
 ## Security
 
@@ -42,18 +46,20 @@ https://z.cash/support/security.html
 
 ## Get started
 
-### Debian-based operating systems
+### Binary packages for Debian-based operating systems
 
 Follow the instructions here: https://github.com/zcash/zcash/wiki/Debian-binary-packages
 
-### Compile it yourself
+### Or, Compile it yourself
+
+#### Install dependencies
 
 On Ubuntu/Debian-based systems:
 
 ```bash
 $ sudo apt-get install \
       build-essential pkg-config libc6-dev m4 g++-multilib \
-      autoconf libtool ncurses-dev unzip git python \
+      autoconf libtool ncurses-dev unzip git python python-zmq \
       zlib1g-dev wget bsdmainutils automake
 ```
 
@@ -61,16 +67,35 @@ On Fedora-based systems:
 
 ```bash
 $ sudo dnf install \
-      git pkgconfig automake autoconf ncurses-devel python wget \
-      gtest-devel gcc gcc-c++ libtool patch
+      git pkgconfig automake autoconf ncurses-devel python \
+      python-zmq wget gtest-devel gcc gcc-c++ libtool patch
 ```
+
+On RHEL-based systems (including Scientific Linux):
+
+* Install devtoolset-3 and autotools-latest (if not previously installed).
+* Run ``scl enable devtoolset-3 'scl enable autotools-latest bash'`` and do the remainder of the build in the shell that this starts.
+
+#### Check gcc version
+
+gcc/g++ 4.9 or later is required. Use ``g++ --version`` to check which version you have.
+
+On Ubuntu Trusty, you can install gcc/g++ 4.9 as follows:
+
+```
+$ sudo add-apt-repository ppa:ubuntu-toolchain-r/test
+$ sudo apt-get update
+$ sudo apt-get install g++-4.9
+```
+
+#### Fetch the software and parameter files
 
 Fetch our repository with git and run `fetch-params.sh` like so:
 
 ```bash
 $ git clone https://github.com/zcash/zcash.git
 $ cd zcash/
-$ git checkout v1.0.3
+$ git checkout v1.0.8-1
 $ ./zcutil/fetch-params.sh
 ```
 
@@ -83,10 +108,13 @@ The message printed by ``git checkout`` about a "detached head" is normal and do
 Ensure you have successfully installed all system package dependencies as described above. Then run the build, e.g.:
 
 ```bash
-$ ./zcutil/build.sh -j$(nproc)
+$ ./zcutil/build.sh --disable-rust -j$(nproc)
 ```
 
-This should compile our dependencies and build `zcashd`. (Note: if you don't have `nproc`, then substitute the number of your processors.)
+This should compile our dependencies and build `zcashd`. (Note: if you don't have `nproc`, then substitute the number of cores on your system. If the build runs out of memory, try again without the `-j` argument, i.e. just `./zcutil/build.sh --disable-rust`.
+)
+
+Note (25 April 2017): if you experience build issues with recent master (after 1.0.8 and v1.0.8-1), try passing the flag `--disable-proton` to `./zcutil/build.sh`.
 
 #### Testing
 
@@ -115,7 +143,9 @@ echo "rpcuser=username" >>~/.zcash/zcash.conf
 echo "rpcpassword=`head -c 32 /dev/urandom | base64`" >>~/.zcash/zcash.conf
 ```
 
-Note that this will overwrite any `zcash.conf` settings you may have added from testnet. You can retain a `zcash.conf` from testnet, but make sure that the `testnet=1` and `addnode=betatestnet.z.cash` settings are removed; use `addnode=mainnet.z.cash` instead. We strongly recommend that you use a random password to avoid [potential security issues with access to the RPC interface](https://github.com/zcash/zcash/blob/master/doc/security-warnings.md#rpc-interface).
+Note that this will overwrite any `zcash.conf` settings you may have added from testnet. (If you want to run on testnet, you can retain a `zcash.conf` from testnet.) To run on mainnet, make sure that the `testnet=1` and `addnode=betatestnet.z.cash` settings are removed; use `addnode=mainnet.z.cash` instead. We strongly recommend that you use a random password to avoid [potential security issues with access to the RPC interface](https://github.com/zcash/zcash/blob/master/doc/security-warnings.md#rpc-interface).
+
+If you wish to run zcashd on testnet, change the lines in zcash.conf indicating the network and node discovery: `testnet=1` instead of `mainnet=1` and `addnode=testnet.z.cash` instead of `addnode=mainnet.z.cash`. 
 
 ### Enabling CPU mining:
 
@@ -123,8 +153,10 @@ If you want to enable CPU mining, run these commands:
 
 ```bash
 $ echo 'gen=1' >> ~/.zcash/zcash.conf
-$ echo "genproclimit=$(nproc)" >> ~/.zcash/zcash.conf
+$ echo "genproclimit=-1" >> ~/.zcash/zcash.conf
 ```
+
+Setting `genproclimit=-1` mines on the maximum number of threads possible on your CPU. If you want to mine with a lower number of threads, set `genproclimit` equal to the number of threads you would like to mine on.
 
 The default miner is not efficient, but has been well reviewed. To use a much more efficient but unreviewed solver, you can run this command:
 
@@ -170,7 +202,7 @@ Let's generate a t-addr first.
 
 ```bash
 $ ./src/zcash-cli getnewaddress
-tb4oHp2v54vfmdgQ3v3SNuQga8JKHTNi2a1
+t14oHp2v54vfmdgQ3v3SNuQga8JKHTNi2a1
 ```
 
 ### Receiving Zcash with a z-addr
@@ -179,7 +211,7 @@ Now let's generate a z-addr.
 
 ```bash
 $ ./src/zcash-cli z_getnewaddress
-ztbqWB8VDjVER7uLKb4oHp2v54v2a1jKd9o4FY7mdgQ3gDfG8MiZLvdQga8JK3t58yjXGjQHzMzkGUxSguSs6ZzqpgTNiZG
+zcBqWB8VDjVER7uLKb4oHp2v54v2a1jKd9o4FY7mdgQ3gDfG8MiZLvdQga8JK3t58yjXGjQHzMzkGUxSguSs6ZzqpgTNiZG
 ```
 
 This creates a private address and stores its key in your local wallet file. Give this address to the sender!
@@ -187,7 +219,7 @@ This creates a private address and stores its key in your local wallet file. Giv
 A z-addr is pretty large, so it's easy to make mistakes with them. Let's put it in an environment variable to avoid mistakes:
 
 ```bash
-$ ZADDR='ztbqWB8VDjVER7uLKb4oHp2v54v2a1jKd9o4FY7mdgQ3gDfG8MiZLvdQga8JK3t58yjXGjQHzMzkGUxSguSs6ZzqpgTNiZG'
+$ ZADDR='zcBqWB8VDjVER7uLKb4oHp2v54v2a1jKd9o4FY7mdgQ3gDfG8MiZLvdQga8JK3t58yjXGjQHzMzkGUxSguSs6ZzqpgTNiZG'
 ```
 
 To get a list of all addresses in your wallet for which you have a spending key, run this command:
@@ -199,8 +231,8 @@ $ ./src/zcash-cli z_listaddresses
 You should see something like:
 ```json
 [
-    "zta6qngiR3U7HxYopyTWkaDLwYBd83D5MT7Jb9gpgTzPLMZytzRbtdPP1Syv4RvRgHeoZrJWSask3DyfwXG9DGPMWMvX7aC",
-    "ztbqWB8VDjVER7uLKb4oHp2v54v2a1jKd9o4FY7mdgQ3gDfG8MiZLvdQga8JK3t58yjXGjQHzMzkGUxSguSs6ZzqpgTNiZG"
+    "zcA6qngiR3U7HxYopyTWkaDLwYBd83D5MT7Jb9gpgTzPLMZytzRbtdPP1Syv4RvRgHeoZrJWSask3DyfwXG9DGPMWMvX7aC",
+    "zcBqWB8VDjVER7uLKb4oHp2v54v2a1jKd9o4FY7mdgQ3gDfG8MiZLvdQga8JK3t58yjXGjQHzMzkGUxSguSs6ZzqpgTNiZG"
 ]
 ```
 
@@ -224,7 +256,7 @@ $ ./src/zcash-cli z_listreceivedbyaddress "$ZADDR"
 If someone gives you their z-addr...
 
 ```bash
-$ FRIEND='ztcDe8krwEt1ozWmGZhBDWrcUfmK3Ue5D5z1f6u2EZLLCjQq7mBRkaAPb45FUH4Tca91rF4R1vf983ukR71kHyXeED4quGV'
+$ FRIEND='zcCDe8krwEt1ozWmGZhBDWrcUfmK3Ue5D5z1f6u2EZLLCjQq7mBRkaAPb45FUH4Tca91rF4R1vf983ukR71kHyXeED4quGV'
 ```
 
 You can send 0.8 ZEC by doing...
@@ -251,6 +283,14 @@ $ ./src/zcash-cli z_getoperationresult
 ]
 ```
 
+### Additional operations for zcash-cli
+As Zcash is an extension of bitcoin, zcash-cli supports all commands that are part of the Bitcoin Core API (as of version 0.11.2), https://en.bitcoin.it/wiki/Original_Bitcoin_client/API_calls_list
+
+For a full list of new commands that are not part of bitcoin API (mostly addressing operations on z-addrs) see https://github.com/zcash/zcash/blob/master/doc/payment-api.md
+
+To list all zcash commands, use `./src/zcash-cli help`.
+
+To get help with a particular command, use `./src/zcash-cli help <command>`.
 
 ## Known Security Issues
 
@@ -264,3 +304,4 @@ Please also see our security page for recent notifications and other
 resources:
 
 https://z.cash/support/security.html
+
