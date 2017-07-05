@@ -27,5 +27,5 @@ Translations of Zcash documentation. Currently contains Spanish, Russian, Portug
 
 ## Français
 
-+[Guide de Minage de Zcash] (https://github.com/zcash/zcash-docs/blob/master/fr/Mining_Guide.md)
-+[Guide Zcash 1.0 "Pousse"] (https://github.com/zcash/zcash-docs/blob/master/fr/Sprout_User_Guide.md)
++ [Guide de Minage de Zcash](https://github.com/zcash/zcash-docs/blob/master/fr/Mining_Guide.md)
++ [Guide Zcash 1.0 "Pousse"](https://github.com/zcash/zcash-docs/blob/master/fr/Sprout_User_Guide.md)
