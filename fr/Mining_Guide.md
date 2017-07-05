@@ -3,7 +3,7 @@
 Bienvenue ! Ce guide est destiné à vous faire miner Zcash, a.k.a "ZEC", sur le mainnet Zcash.
 L'unité pour miner est la Sol/s (solution par seconde).
 
-Si vous rencontrez des problèmes, n'hésitez pas à nous contacter. Cela demande beaucoup de travail pour rendre cela utilisable and vos commentaires nous aides à prioriser les problèmes les plus importants. Pour l'aide utilisateur, nous recommendons d'utiliser notre forum :
+Si vous rencontrez des problèmes, n'hésitez pas à nous contacter. Cela demande beaucoup de travail pour rendre cela utilisable et vos commentaires nous aident à prioriser les problèmes les plus importants. Pour l'aide utilisateur, nous recommandons d'utiliser notre forum :
 
 https://forum.z.cash/
 
@@ -38,13 +38,13 @@ Félicitations ! Vous minez sur le mainnet.
 
 ### Dépenser la Récompense de Minage
 
-Les pièces sont minés dans une t-addr (adresse transparente), mais peuvent seulement être dépensée vers une z-addr (adresse protégée). Référez vous à notre [Guide Utilisateur  1.0](https://github.com/zcash/zcash-docs/blob/master/fr/Sprout_User_Guide.md) pour de plus amples instructions sur comment utiliser la commande `z_sendmany` pour envoyer des pièces de t-addr vers une z-addr. Vous devez avoir au moins 4GB de mémoire vive pour cette opération.
+Les pièces sont minées dans une t-addr (adresse transparente), mais peuvent seulement être dépensées vers une z-addr (adresse protégée). Référez vous à notre [Guide Utilisateur  1.0](https://github.com/zcash/zcash-docs/blob/master/fr/Sprout_User_Guide.md) pour de plus amples instructions sur comment utiliser la commande `z_sendmany` pour envoyer des pièces de t-addr vers une z-addr. Vous devez avoir au moins 4GB de mémoire vive pour cette opération.
 
 ## Modifications
 
 ### Miner vers une seule adresse
 
-Le miner interne `zcashd` utilise une nouvelle adresse transparente pour chaque blocs miné. Si vous désirez utiliser la même adresse à chaque nouveau bloc miné, allez à la ligne suivante dans les fichiers `src/miner.cpp` (dans la fonction `ProcessBlockFound()`) et `src/wallet/wallet.cpp` (dans la fonction `CommitTransaction()`) :
+Le miner interne `zcashd` utilise une nouvelle adresse transparente pour chaque blocs minés. Si vous désirez utiliser la même adresse à chaque nouveau bloc miné, allez à la ligne suivante dans les fichiers `src/miner.cpp` (dans la fonction `ProcessBlockFound()`) et `src/wallet/wallet.cpp` (dans la fonction `CommitTransaction()`) :
 
 ```cpp
 reservekey.KeepKey();
