@@ -288,7 +288,7 @@ https://github.com/zcash/zcash/blob/master/doc/payment-api.md
 
 列出所有的zcash命令：``./src/zcash-cli help``
 
-获取具体某个命令的帮助文档：```./src/zcash-cli help <command>`
+获取具体某个命令的帮助文档：``./src/zcash-cli help <command>``
 
 ## 已知的安全问题
 
