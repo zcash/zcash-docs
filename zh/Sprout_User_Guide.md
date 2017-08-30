@@ -1,12 +1,12 @@
 # Zcash 1.0 "发芽" 版本指南
 
-欢迎！这个指导的意图是让你学会运行 Zcash 的官方网络。Zcash 当前有一些局限性：它仅支持 Linux 系统，并且需要 64 位系统，在某些情况下它需要大量的存储空间和 CPU 计算来创造交易。
+欢迎！这个指导的意图是让你学会运行 Zcash 的官方网络。Zcash 当前有一些局限：它仅支持 Linux 系统，并且需要 64 位系统，在某些情况下它需要大量的存储空间和 CPU 计算来创造交易。
 
 如果你遇到困难，请告诉我们。我们计划在未来改进我们的软件，让它不需要如此高的存储空间和 CPU 算力，并且运行在更多的系统上。
 
 ## 软件升级？
 
-如果你曾经在测试网络上使用过 alpha/beta/rc 等版本，请确保你的 `~/.zcash/zcash.conf` 中并没有包涵 `testnet=1` 或是 `addnode=betatestnet.z.cash` 。如果你使用的是基于 Debian 的分发机制，你可以参考 [Debian 指导](https://github.com/zcash/zcash/wiki/Debian-binary-packages) 来在你的系统上安装 Zcash。另外，你可以升级您本地对于我们代码的快照：
+如果你曾经在测试网络上使用过 alpha/beta/rc 等版本，请确保你的 `~/.zcash/zcash.conf` 中并没有包含 `testnet=1` 或是 `addnode=betatestnet.z.cash` 。如果你使用基于 Debian 的发行版，你可以参考 [Debian 指导](https://github.com/zcash/zcash/wiki/Debian-binary-packages) 来在你的系统上安装 Zcash。另外，你可以升级您本地对于我们代码的快照：
 
 ```
 git fetch origin
@@ -19,17 +19,17 @@ git checkout v1.0.3
 
 ## 一个关于术语的快速笔记
 
-Zcash 支持两种不同的地址，一个 _z-addr_ (以 **z** 作为开头) 的地址，使用了零知识证明和其他密码学工具来保护用户隐私。同样有 _t-addrs_ (以 **t** 作为开头)的地址，这些第一与比特币地址用法相同。
+Zcash 支持两种不同的地址，一个 _z-addr_ (以 **z** 作为开头) 的地址，使用了零知识证明和其他密码学工具来保护用户隐私。还有 _t-addrs_ (以 **t** 作为开头)的地址，与比特币地址的用法相似。
 
 ## 需要
 
 目前，你将会需要：
 
-* Linux 系统 (具备基于 Debian 的分布式工具)
+* Linux 系统 (基于 Debian 的发行版最容易使用)
 * 64 位
 * 4GB 空余存储空间
 
-目前的界面是命令行客户端 (`zcash-cli`) 和远程过程调用(RPC)接口，它们被记录在这里：
+目前的界面是命令行客户端 (`zcash-cli`) 和远程过程调用(RPC)接口，这里有一些文档：
 
 https://github.com/zcash/zcash/blob/v1.0.3/doc/payment-api.md
 
@@ -41,12 +41,12 @@ https://z.cash/zh/support/security.html
 
 ## 开始
 
-### 基于 Debian 的操作系统
+### Debian 系列发行版
 
-在这里获得指导：
+可以遵循下列指导：
 https://github.com/zcash/zcash/wiki/Debian-binary-packages
 
-### 自己进行编译
+### 自己编译
 
 在基于 Ubuntu 或者 Debian 的系统中:
 
@@ -76,7 +76,7 @@ $ ./zcutil/fetch-params.sh
 
 这将抓取我们发芽版本的验证密钥(最终的版本被建立在[参数生成仪式](https://github.com/zcash/mpc))，并已经把它们放入 `~/.zcash-params/`。这些密钥大约占用 911 MB 存储空间，因此下载它们需要一些时间。
 
-这些由 ``git checkout`` 印制的信息是关于"分离的文件头部"，这些是正常的，并不指明存在问题。
+如果 ``git checkout`` 提示"头指针分离"，这是正常的，并不指明存在任何问题。
 
 #### 建造
 
@@ -86,7 +86,7 @@ $ ./zcutil/fetch-params.sh
 $ ./zcutil/build.sh -j$(nproc)
 ```
 
-这样做会编译我们的从属文件，并建造 `zcashd`。(注意：如果你没有 `nproc`，那么需要代替你的处理器数量。)
+这样做会编译我们的从属文件，并编译 `zcashd`。(注意：如果你没有 `nproc`，那么你需要把它换成处理器核心数。)
 
 #### 测试
 
@@ -102,7 +102,7 @@ $ ./qa/zcash/full-test-suite.sh
 $ ./qa/pull-tester/rpc-tests.sh
 ```
 
-这项测试需要许多存储器运行正确。内存不足的错误通常会导致失败或错误出现，同时在输出中出现 "std::bad_alloc" 。
+这项测试需要许多内存以正常运行。内存不足通常会导致失败或错误出现，同时在输出中出现 "std::bad_alloc" 。
 
 ## 配置
 
@@ -115,11 +115,11 @@ echo "rpcuser=username" >>~/.zcash/zcash.conf
 echo "rpcpassword=`head -c 32 /dev/urandom | base64`" >>~/.zcash/zcash.conf
 ```
 
-注意：这样做将覆盖所有你之前在测试网络中对 `zcash.conf` 内部的设置。你可以在测试网络中保留 `zcash.conf` ，但请注意 `testnet=1` 和 `addnode=betatestnet.z.cash` 的设置已经被删除了；请使用 `addnode=mainnet.z.cash` 。我们强烈建议您使用随机密码来避免 [在进入 RPC 接口时的潜在安全问题](https://github.com/zcash/zcash/blob/master/doc/security-warnings.md#rpc-interface)。
+注意：这样做将覆盖所有你之前在测试网络中对 `zcash.conf` 内部的设置。进入主网络前，你可以保留在测试网络中配置的 `zcash.conf` ，但请确保 `testnet=1` 和 `addnode=betatestnet.z.cash` 的设置已经被删除了；请使用 `addnode=mainnet.z.cash` 。我们强烈建议您使用随机密码来避免 [在进入 RPC 接口时的潜在安全问题](https://github.com/zcash/zcash/blob/master/doc/security-warnings.md#rpc-interface)。
 
-### 使能 CPU 挖矿:
+### 启用 CPU 挖矿:
 
-如果你需要使能 CPU 挖矿，请运行以下命令行：
+如果你需要启用 CPU 挖矿，请运行以下命令行：
 
 ```bash
 $ echo 'gen=1' >> ~/.zcash/zcash.conf
@@ -162,7 +162,7 @@ $ ./src/zcash-cli getpeerinfo
 
 ## 使用 Zcash
 
-第一，如果你想要得到 Zcash ，你可以从交易所、普通用户或服务供应商处购买。如果(安全地)得到 Zcash，并不在本文的讨论范畴，但你需要保持警惕。避免被骗！
+首先，如果你想要得到 Zcash ，你可以从交易所、普通用户或服务供应商处购买。如何(安全地)得到 Zcash，并不在本文的讨论范畴，但你需要保持警惕。避免被骗！
 
 ### 生成一个 t-addr
 
@@ -190,7 +190,7 @@ ztbqWB8VDjVER7uLKb4oHp2v54v2a1jKd9o4FY7mdgQ3gDfG8MiZLvdQga8JK3t58yjXGjQHzMzkGUxS
 $ ZADDR='ztbqWB8VDjVER7uLKb4oHp2v54v2a1jKd9o4FY7mdgQ3gDfG8MiZLvdQga8JK3t58yjXGjQHzMzkGUxSguSs6ZzqpgTNiZG'
 ```
 
-为了得到你钱包中所有的地址列表，这些地址你都掌握这花费密钥，可以运行以下命令：
+为了得到你的钱包中所有你掌握着花费私钥的地址列表，可以运行以下命令：
 
 ```bash
 $ ./src/zcash-cli z_listaddresses
@@ -254,7 +254,7 @@ $ ./src/zcash-cli z_getoperationresult
 
 ## 了解安全问题
 
-每一个版本更新都包涵一个名为 `./doc/security-warnings.md` 的文档，它描述了这个版本所包涵的已知安全问题。你可以在这里找到最新版本的文档：
+每一个版本更新都包含一个名为 `./doc/security-warnings.md` 的文档，它描述了这个版本所包含的已知安全问题。你可以在这里找到最新版本的文档：
 
 https://github.com/zcash/zcash/blob/master/doc/security-warnings.md
 
