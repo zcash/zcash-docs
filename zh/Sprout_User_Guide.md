@@ -115,7 +115,10 @@ echo "rpcuser=username" >>~/.zcash/zcash.conf
 echo "rpcpassword=`head -c 32 /dev/urandom | base64`" >>~/.zcash/zcash.conf
 ```
 
-注意：这样做将覆盖所有你之前在测试网络中对 `zcash.conf` 内部的设置。你可以在测试网络中保留 `zcash.conf` ，但请注意 `testnet=1` 和 `addnode=betatestnet.z.cash` 的设置已经被删除了；请使用 `addnode=mainnet.z.cash` 。我们强烈建议您使用随机密码来避免 [在进入 RPC 接口时的潜在安全问题](https://github.com/zcash/zcash/blob/master/doc/security-warnings.md#rpc-interface)。
+注意：这样做将覆盖所有你之前在测试网络中对 `zcash.conf` 内部的设置(如果你想继续使用测试网络，你可以在测试网络中保留 `zcash.conf` ）。如果想在主要网络中运行，请注意 `testnet=1` 和 `addnode=betatestnet.z.cash` 的设置已经被删除了；请使用 `addnode=mainnet.z.cash` 。我们强烈建议您使用随机密码来避免 [在进入 RPC 接口时的潜在安全问题](https://github.com/zcash/zcash/blob/master/doc/security-warnings.md#rpc-interface)。
+
+如果你希望在测试网络中运行 zcashd ，请改变 zcash.conf 中的有关网络和探索节点的部分: testnet=1 而不是 mainnet=1 并且 addnode=testnet.z.cash 而不是 addnode=mainnet.z.cash.
+
 
 ### 使能 CPU 挖矿:
 
@@ -125,6 +128,8 @@ echo "rpcpassword=`head -c 32 /dev/urandom | base64`" >>~/.zcash/zcash.conf
 $ echo 'gen=1' >> ~/.zcash/zcash.conf
 $ echo "genproclimit=$(nproc)" >> ~/.zcash/zcash.conf
 ```
+
+设置 genproclimit=-1 来尽可能的使用CPU最大的线程来挖矿。如果你想使用更少的线程来挖矿，设置 genproclimit 为你希望的合适的值。
 
 默认的挖矿程序并不高效，但已经被很好的审阅过了。如果想要运行更加高效但并没有被审阅过的求解器，你可以运行以下命令行：
 
@@ -184,7 +189,7 @@ ztbqWB8VDjVER7uLKb4oHp2v54v2a1jKd9o4FY7mdgQ3gDfG8MiZLvdQga8JK3t58yjXGjQHzMzkGUxS
 
 这些命令生成了隐私的地址，并将私钥存储于您的本地钱包文件中。可以把这个地址交付给要发币给您的人！
 
-一个 z-addr 是非常庞大的，因此使用它很可能会犯错误。让我们把它变成一个环境变量来避免错误：
+一个 z-addr 很长，因此使用它很可能会犯笔误。让我们把它变成一个环境变量来避免错误：
 
 ```bash
 $ ZADDR='ztbqWB8VDjVER7uLKb4oHp2v54v2a1jKd9o4FY7mdgQ3gDfG8MiZLvdQga8JK3t58yjXGjQHzMzkGUxSguSs6ZzqpgTNiZG'
@@ -251,8 +256,20 @@ $ ./src/zcash-cli z_getoperationresult
 ]
 ```
 
+## zcash-cli 的其他操作
 
-## 了解安全问题
+Zcash 是比特币的一个扩展，因此 zcash-cli 支持 Bitcoin Core API (as of version 0.11.2)  部分中的所有命令，      https://en.bitcoin.it/wiki/Original_Bitcoin_client/API_calls_list
+
+对于全部名单上的一些新命令并不是比特币 API 的一部分（ z-addrs 上的主要操作 ）参见 https://github.com/zcash/zcash/blob/master/doc/payment-api.md
+
+使用 ./src/zcash-cli help 查看所有命令。
+
+获取特定命令的帮助，运行 ./src/zcash-cli help <command>.
+
+
+
+
+## 已知的安全问题
 
 每一个版本更新都包涵一个名为 `./doc/security-warnings.md` 的文档，它描述了这个版本所包涵的已知安全问题。你可以在这里找到最新版本的文档：
 
