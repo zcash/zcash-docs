@@ -12,7 +12,7 @@ https://forum.z.cash/
 
 ## 配置
 
-按照 [1.0-User-Guide#configuration](https://github.com/zcash/zcash-docs/blob/master/zh/Sprout_User_Guide.md#configuration) 中的提示，配置您的节点，包括以下章节的内容， [使能 CPU 挖矿] (https://github.com/zcash/zcash-docs/blob/master/zh/Sprout_User_Guide.md).
+按照 [1.0-User-Guide#configuration](https://github.com/zcash/zcash-docs/blob/master/zh/Sprout_User_Guide.md#configuration) 中的提示，配置您的节点，包括以下章节的内容， [使能 CPU 挖矿](https://github.com/zcash/zcash-docs/blob/master/zh/Sprout_User_Guide.md).
 
 ## 挖矿
 
@@ -35,34 +35,27 @@ Zcash Miner started
 
 恭喜你！你现在已经在 Zcash 主网中运行了挖矿程序。
 
+
+停止 Zcash 进程守护:
+
+```bash
+$ ./src/zcash-cli stop 
+```
+
 ### 花费挖矿收益
 
-币被挖到了一个 t-addr (透明地址), 但是只能发送到 z-addr(隐私地址)。参考我们 [1.0 用户指导](https://github.com/zcash/zcash-docs/blob/master/zh/Sprout_User_Guide.md)，来了解如何使用 `z_sendmany` 命令和如何从 t-addr 发送货币到 z-addr. 你需要至少 4 GB 的 RAM 来运行这些功能。
+币被挖到了一个 t-addr (透明地址), 但是只能发送到 z-addr(隐私地址)，并且会在交易过程中被完全清除，不会改变其他部分。参考我们的 [1.0 用户指导](https://github.com/zcash/zcash-docs/blob/master/zh/Sprout_User_Guide.md)来了解如何使用 `z_sendmany` 命令从 t-addr 发送货币到 z-addr， 你需要至少 4 GB 的 RAM 来运行这些功能。
 
-## 修饰
+### 矿池
+
+如果你在家里或者单独一人在挖矿，当你加入一个已有的矿池你大概也会用所成就。查看社区维护的[矿池列表](https://www.zcashcommunity.com/mining/mining-pools/)以获得下一步的指导。
+
+
+### 使用 P2PKH 交易
+在 `zcashd` 挖矿程序中，继承了比特币对于货币库交易使用的 P2PK，但是Zcash 1.0.6 以及更新的版本中，跟随比特币的趋势，[默认使用 P2PKH](https://github.com/zcash/zcash/issues/945) 。
+
+## 配置选项
 
 ### 挖掘并发币到一个单独地址
 
-在 `zcashd`_ 挖矿程序内部，对于每一个被挖掘出的区块都使用一个新的透明地址。如果你向对于每个被挖掘出的区块，使用同样的地址，请找到以下函数进行设置，`src/miner.cpp` (在以下函数中 `ProcessBlockFound()`) 和 `src/wallet/wallet.cpp` (在以下函数中 `CommitTransaction()`):
-
-```cpp
-reservekey.KeepKey();
-```
-
-在以上两个函数中去掉或注释掉以上的命令。
-
-### 使用 P2PKH 交易
-
-在 `zcashd`_ 挖矿程序中，继承了比特币对于货币库交易使用的 P2PK。随着之后的发展，比特币区块链使用了 P2PKH 代替了 P2PK；我们已经考虑了[修改内部挖矿程序来使用 P2PKH] (https://github.com/zcash/zcash/issues/945)，但目前没有包涵在 1.0 版本中。
-
-如果你想使用 P2PKH 来进行您的货币库交易，请查看以下命令 `src/miner.cpp` (在函数 `CreateNewBlockWithKey()` 中)：
-
-```cpp
-CScript scriptPubKey = CScript() << ToByteVector(pubkey) << OP_CHECKSIG;
-```
-
-将其修改为:
-
-```cpp
-CScript scriptPubKey = CScript() << OP_DUP << OP_HASH160 << ToByteVector(pubkey.GetID()) << OP_EQUALVERIFY << OP_CHECKSIG;
-```
+在 `zcashd` 挖矿程序内部，对于每一个被挖掘出的区块都使用一个新的透明地址。如果你想对于每个被挖掘出的区块使用同样的地址，你可以在 Zcash 1.0.6 以及更新的版本中使用 -mineraddress= 选项。
