@@ -6,7 +6,7 @@ Please let us know if you run into snags. We plan to make it less memory/CPU int
 
 ## Upgrading?
 
-If you were playing with our alpha/beta/rc testnets, ensure that your `~/.zcash/zcash.conf` does not contain `testnet=1` or `addnode=testnet.z.cash`. If you're on a Debian-based distribution, you can follow the [Debian instructions](https://github.com/zcash/zcash/wiki/Debian-binary-packages) to install zcash on your system. Otherwise, you can update your local snapshot of our code:
+If you were playing with our alpha/beta/rc testnets, ensure that your `~/.zcash/zcash.conf` does not contain `testnet=1` or `addnode=testnet.z.cash`. If you're on a Debian-based distribution, you can follow the [Debian instructions](https://github.com/zcash/zcash/wiki/Debian-binary-packages) to install Zcash on your system. Otherwise, you can update your local snapshot of our code:
 
 ```
 git fetch origin
@@ -39,7 +39,7 @@ https://github.com/zcash/zcash/blob/v1.0.8-1/doc/payment-api.md
 
 ## Security
 
-Before installing, upgrading, or running zcash, ensure you have checked
+Before installing, upgrading, or running Zcash, ensure you have checked
 for any security issues. Please See our Security page:
 
 https://z.cash/support/security.html
@@ -288,7 +288,7 @@ As Zcash is an extension of bitcoin, zcash-cli supports all commands that are pa
 
 For a full list of new commands that are not part of bitcoin API (mostly addressing operations on z-addrs) see https://github.com/zcash/zcash/blob/master/doc/payment-api.md
 
-To list all zcash commands, use `./src/zcash-cli help`.
+To list all Zcash commands, use `./src/zcash-cli help`.
 
 To get help with a particular command, use `./src/zcash-cli help <command>`.
 
